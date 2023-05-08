@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+## Water jug challenge by Leandro Perez
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This is a logic and algorithm challenge, the porpouse of the challenge is to create an algorithm that solves the water jug riddle that consist in three given inputs (x,y,z) which represent the capacites of three water jugs.
 
-In the project directory, you can run:
+You have two jugs with capacities X and Y liters respectively, and you need to measure exactly Z liters of water. The riddle allows you to perform the following actions:
 
-### `npm start`
+1. Fill a jug completely from the tap.
+2. Empty a jug completely onto the ground.
+3. Pour water from one jug into the other until either the pouring jug is empty or the receiving jug is full.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I've build a function that solves this riddle, you can find it in src/helpers/solveWaterJugRiddle.ts
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The function returns an array of Action objects, representing the steps needed to solve the riddle. Each Action object has the following properties:
 
-### `npm test`
+1. xValue: The amount of water in the first jug after the action.
+2. yValue: The amount of water in the second jug after the action.
+3. explanation: A string describing the action performed.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The function uses a breadth-first search algorithm to explore all possible states of the two jugs and find a sequence of actions that leads to the desired amount of water Z in one of the jugs. It maintains a queue of states to visit and a set of visited states to avoid revisiting the same state multiple times.
 
-### `npm run build`
+The algorithm starts with an initial state of both jugs empty `([0, 0, []])` and continues until it finds a state where either Z liters of water is in one of the jugs. At each step, it generates all possible next states by applying the allowed actions, and adds them to the queue for further exploration.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If the input parameters violate certain conditions (e.g., X, Y, or Z is zero, Z is greater than the sum of X and Y, or any of the parameters is not an integer), the function returns an empty array, indicating that it is not possible to solve the riddle with the given input.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You will find the tests for this function in src/tests/solveWaterRiddle.test.ts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Where you can check if the function:
 
-### `npm run eject`
+1. returns an empty array when any value is zero
+2. returns an empty array when any value is not an integer
+3. returns an empty array when Z is higher than the sum of X and Y
+4. returns an empty array when X, Y, or Z are equal to zero
+5. returns the correct actions to solve the water jug riddle
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+run `npm run test` to run the tests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Follow these steps to install and set up the project:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Clone this repository: git clone https://github.com/leandroperez19/water-jug-challenge
+2. Navigate to the project directory: cd water-jug-challenge
+3. Install the dependencies: npm install
 
-## Learn More
+## Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. `typescript`
+2. `jest`
+3. `testing-library`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Utilities 
+
+1. Github repository: `https://github.com/leandroperez19/water-jug-challenge`
+2. Demo: `https://water-jug-challenge.netlify.app/`

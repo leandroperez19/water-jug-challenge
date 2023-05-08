@@ -18,6 +18,7 @@ function App() {
     const info = solveWaterJugRiddle(Number(x), Number(y), Number(z));
     setTableInfo(info);
   };
+  
 
   return (
     <>

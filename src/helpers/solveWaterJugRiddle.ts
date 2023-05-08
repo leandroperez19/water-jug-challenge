@@ -4,12 +4,11 @@ const solveWaterJugRiddle = (
   X: number,
   Y: number,
   Z: number
-): Action[] | null => {
+): Action[] => {
   const isSomeValueZero = X <= 0 || Y <= 0 || Z <= 0;
   const isZHeigher = Z > X + Y;
   const isSomeValueNotInt =
     !Number.isInteger(X) || !Number.isInteger(Y) || !Number.isInteger(Z);
-  // if (Z > X + Y || Z % gcd(X, Y) !== 0) return null;
 
   if (isSomeValueZero || isSomeValueNotInt || isZHeigher) return [];
 
@@ -97,14 +96,5 @@ const solveWaterJugRiddle = (
 
   return actions;
 };
-
-// const gcd = (a: number, b: number): number => {
-//   while (b !== 0) {
-//     const temp = b;
-//     b = a % b;
-//     a = temp;
-//   }
-//   return a;
-// };
 
 export default solveWaterJugRiddle;
