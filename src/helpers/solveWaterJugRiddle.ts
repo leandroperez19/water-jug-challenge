@@ -18,6 +18,7 @@ const solveWaterJugRiddle = (
   const queue: [number, number, Action[]][] = [[0, 0, []]];
 
   while (queue.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const [xValue, yValue, path] = queue.shift()!;
     const key = `${xValue}-${yValue}`;
 
@@ -33,7 +34,7 @@ const solveWaterJugRiddle = (
       const action: Action = {
         xValue: X,
         yValue,
-        explanation: 'Fill bucket x',
+        explanation: "Fill bucket x",
       };
       queue.push([X, yValue, [...path, action]]);
     }
@@ -42,7 +43,7 @@ const solveWaterJugRiddle = (
       const action: Action = {
         xValue,
         yValue: Y,
-        explanation: 'Fill bucket y',
+        explanation: "Fill bucket y",
       };
       queue.push([xValue, Y, [...path, action]]);
     }
@@ -51,7 +52,7 @@ const solveWaterJugRiddle = (
       const action: Action = {
         xValue: 0,
         yValue,
-        explanation: 'Empty bucket x',
+        explanation: "Empty bucket x",
       };
       queue.push([0, yValue, [...path, action]]);
     }
@@ -60,7 +61,7 @@ const solveWaterJugRiddle = (
       const action: Action = {
         xValue,
         yValue: 0,
-        explanation: 'Empty bucket y',
+        explanation: "Empty bucket y",
       };
       queue.push([xValue, 0, [...path, action]]);
     }
@@ -70,7 +71,7 @@ const solveWaterJugRiddle = (
       const action: Action = {
         xValue: xValue - transferAmount,
         yValue: yValue + transferAmount,
-        explanation: 'Transfer bucket x to bucket y',
+        explanation: "Transfer bucket x to bucket y",
       };
       queue.push([
         xValue - transferAmount,
@@ -84,7 +85,7 @@ const solveWaterJugRiddle = (
       const action: Action = {
         xValue: xValue + transferAmount,
         yValue: yValue - transferAmount,
-        explanation: 'Transfer bucket y to bucket x',
+        explanation: "Transfer bucket y to bucket x",
       };
       queue.push([
         xValue + transferAmount,
@@ -96,5 +97,6 @@ const solveWaterJugRiddle = (
 
   return actions;
 };
+
 
 export default solveWaterJugRiddle;

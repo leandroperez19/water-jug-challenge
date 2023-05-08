@@ -72,5 +72,21 @@ describe("solveWaterJugRiddle", () => {
         "explanation": "Transfer bucket y to bucket x"
     }
   ]);
+  const result3 = solveWaterJugRiddle(4,16,4);
+  expect(result3).toEqual([
+    {
+        "xValue": 4,
+        "yValue": 0,
+        "explanation": "Fill bucket x"
+    }
+  ])
+  const result4 = solveWaterJugRiddle(16,4,4);
+  expect(result4).toEqual([
+    {
+        "xValue": 0,
+        "yValue": 4,
+        "explanation": "Fill bucket y"
+    }
+  ])
   });
 });
